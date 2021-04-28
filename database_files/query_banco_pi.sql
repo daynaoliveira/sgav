@@ -66,8 +66,8 @@ CREATE TABLE IF NOT EXISTS employees(
     wage DOUBLE(10, 2) NOT NULL COMMENT 'Salário',
     created_at TIMESTAMP NOT NULL,
     updated_at DATETIME DEFAULT NULL,
-    CONSTRAINT fk_role FOREIGN KEY(id_role) REFERENCES roles(id_role) ON DELETE CASCADE ON UPDATE CASCADE,
-	CONSTRAINT fk_address FOREIGN KEY(id_address) REFERENCES address(id_address) ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT fk_role FOREIGN KEY(id_role) REFERENCES roles(id_role) ON DELETE NO ACTION ON UPDATE CASCADE,
+	CONSTRAINT fk_address FOREIGN KEY(id_address) REFERENCES address(id_address) ON DELETE NO ACTION ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS brands(
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS models(
     model VARCHAR(100) UNIQUE NOT NULL COMMENT 'Modelo do veículo',
 	created_at TIMESTAMP NOT NULL,
     updated_at DATETIME DEFAULT NULL,
-    CONSTRAINT fk_brand FOREIGN KEY(id_brand) REFERENCES brands(id_brand) ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT fk_brand FOREIGN KEY(id_brand) REFERENCES brands(id_brand) ON DELETE NO ACTION ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS cars(
@@ -105,9 +105,25 @@ CREATE TABLE IF NOT EXISTS cars(
 	CONSTRAINT fk_model FOREIGN KEY(id_model) REFERENCES models(id_model) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS customers(
+	id_customer INT PRIMARY KEY UNIQUE NOT NULL AUTO_INCREMENT,
+    id_address INT NOT NULL,
+    c_name VARCHAR(150) NOT NULL,
+    born DATE NOT NULL COMMENT 'Data de nascimento',
+    rg VARCHAR(25) NOT NULL,
+    cpf CHAR(1) UNIQUE NOT NULL,
+    landline CHAR(10) NOT NULL COMMENT 'Telefone fixo',
+    cell CHAR(1) NOT NULL,
+    email VARCHAR(150) UNIQUE NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    updated_at DATETIME DEFAULT NULL,
+    CONSTRAINT fk_c_address FOREIGN KEY(id_address) REFERENCES address(id_address) ON DELETE NO ACTION ON UPDATE CASCADE
+);
+
 CREATE TABLE IF NOT EXISTS rental_cars(
 	id_rental_car INT PRIMARY KEY UNIQUE NOT NULL AUTO_INCREMENT,
     id_car INT NOT NULL,
+    id_customer INT NOT NULL COMMENT 'Cliente',
     id_employee INT NOT NULL,
     price DOUBLE(10, 2) NOT NULL COMMENT 'Preço do aluguel',
     rental_date DATE NOT NULL COMMENT 'Data do aluguel',
@@ -115,8 +131,9 @@ CREATE TABLE IF NOT EXISTS rental_cars(
     returned BOOLEAN DEFAULT 0 COMMENT 'Devolvido [sim = 1 | não = 0]',
     created_at TIMESTAMP NOT NULL,
     updated_at DATETIME DEFAULT NULL,
-    CONSTRAINT fk_car FOREIGN KEY(id_car) REFERENCES cars(id_car) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT fk_employee FOREIGN KEY(id_employee) REFERENCES employees(id_employee) ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT fk_car FOREIGN KEY(id_car) REFERENCES cars(id_car) ON DELETE NO ACTION ON UPDATE CASCADE,
+	CONSTRAINT fk_customer FOREIGN KEY(id_customer) REFERENCES customers(id_customer) ON DELETE NO ACTION ON UPDATE CASCADE,
+    CONSTRAINT fk_employee FOREIGN KEY(id_employee) REFERENCES employees(id_employee) ON DELETE NO ACTION ON UPDATE CASCADE
 );
 
 /*INSERT INTO states (state_name, acronym, region) VALUES ('Rondônia','RO','Norte'),('Acre','AC','Norte'),('Amazonas','AM','Norte'),('Roraima','RR','Norte'),('Pará','PA','Norte'),('Amapá','AP','Norte'),('Tocantins','TO','Norte'),
