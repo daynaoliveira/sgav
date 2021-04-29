@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS states(
 CREATE TABLE IF NOT EXISTS counties(
 	id_county INT PRIMARY KEY UNIQUE NOT NULL AUTO_INCREMENT,
     id_state INT NOT NULL,
-    county VARCHAR(150) NOT NULL  COMMENT 'Município',
+    county VARCHAR(75) NOT NULL  COMMENT 'Município',
     created_at TIMESTAMP NOT NULL,
     updated_at DATETIME DEFAULT NULL,
 	CONSTRAINT fk_state FOREIGN KEY(id_state) REFERENCES states(id_state) ON DELETE CASCADE ON UPDATE CASCADE
@@ -22,10 +22,10 @@ CREATE TABLE IF NOT EXISTS counties(
 CREATE TABLE IF NOT EXISTS address(
 	id_address INT PRIMARY KEY UNIQUE NOT NULL AUTO_INCREMENT,
     id_county INT NOT NULL  COMMENT 'Município',
-    address VARCHAR(150) NOT NULL,
-    num VARCHAR(4) NOT NULL,
-    district VARCHAR(150) NOT NULL COMMENT 'Bairro',
-    complement VARCHAR(100) DEFAULT NULL,
+    address VARCHAR(75) NOT NULL,
+    num VARCHAR(5) NOT NULL,
+    district VARCHAR(75) NOT NULL COMMENT 'Bairro',
+    complement VARCHAR(75) DEFAULT NULL,
     created_at TIMESTAMP NOT NULL,
     updated_at DATETIME DEFAULT NULL,
     CONSTRAINT fk_county FOREIGN KEY(id_county) REFERENCES counties(id_county) ON DELETE CASCADE ON UPDATE CASCADE
@@ -33,8 +33,8 @@ CREATE TABLE IF NOT EXISTS address(
 
 CREATE TABLE IF NOT EXISTS departments(
 	id_department INT PRIMARY KEY UNIQUE NOT NULL AUTO_INCREMENT,
-    d_name VARCHAR(100) UNIQUE NOT NULL  COMMENT 'Departamento',
-    locale VARCHAR(50) NOT NULL,
+    d_name VARCHAR(75) UNIQUE NOT NULL  COMMENT 'Departamento',
+    locale VARCHAR(25) NOT NULL,
     created_at TIMESTAMP NOT NULL,
     updated_at DATETIME DEFAULT NULL,
     actived BOOLEAN DEFAULT 1
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS departments(
 CREATE TABLE IF NOT EXISTS roles(
 	id_role INT PRIMARY KEY UNIQUE NOT NULL AUTO_INCREMENT,
     id_department INT NOT NULL,
-    r_name VARCHAR(50) NOT NULL COMMENT 'Função',
+    r_name VARCHAR(25) NOT NULL COMMENT 'Função',
     created_at TIMESTAMP NOT NULL,
     updated_at DATETIME DEFAULT NULL,
     actived BOOLEAN DEFAULT 1,
@@ -54,14 +54,14 @@ CREATE TABLE IF NOT EXISTS employees(
 	id_employee INT PRIMARY KEY UNIQUE NOT NULL AUTO_INCREMENT,
     id_role INT NOT NULL COMMENT 'Função',
     id_address INT NOT NULL,
-    e_name VARCHAR(150) NOT NULL,
+    e_name VARCHAR(75) NOT NULL,
     born DATE NOT NULL COMMENT 'Data de nascimento',
     rg VARCHAR(25) NOT NULL,
-    cpf CHAR(1) UNIQUE NOT NULL,
+    cpf CHAR(11) UNIQUE NOT NULL,
     ctps VARCHAR(25) UNIQUE NOT NULL,
     landline CHAR(10) NOT NULL COMMENT 'Telefone fixo',
-    cell CHAR(1) NOT NULL,
-    email VARCHAR(150) UNIQUE NOT NULL,
+    cell CHAR(11) NOT NULL,
+    email VARCHAR(75) UNIQUE NOT NULL,
     admission DATE NOT NULL COMMENT 'Data de admissão',
     wage DOUBLE(10, 2) NOT NULL COMMENT 'Salário',
     created_at TIMESTAMP NOT NULL,
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS employees(
 
 CREATE TABLE IF NOT EXISTS brands(
 	id_brand INT PRIMARY KEY UNIQUE NOT NULL AUTO_INCREMENT,
-    brand VARCHAR(50) UNIQUE NOT NULL COMMENT 'Marca do veículo',
+    brand VARCHAR(25) UNIQUE NOT NULL COMMENT 'Marca do veículo',
     created_at TIMESTAMP NOT NULL,
     updated_at DATETIME DEFAULT NULL
 );
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS brands(
 CREATE TABLE IF NOT EXISTS models(
 	id_model INT PRIMARY KEY UNIQUE NOT NULL AUTO_INCREMENT,
     id_brand INT NOT NULL COMMENT 'Marca do veículo',
-    model VARCHAR(100) UNIQUE NOT NULL COMMENT 'Modelo do veículo',
+    model VARCHAR(75) UNIQUE NOT NULL COMMENT 'Modelo do veículo',
 	created_at TIMESTAMP NOT NULL,
     updated_at DATETIME DEFAULT NULL,
     CONSTRAINT fk_brand FOREIGN KEY(id_brand) REFERENCES brands(id_brand) ON DELETE NO ACTION ON UPDATE CASCADE
@@ -89,15 +89,15 @@ CREATE TABLE IF NOT EXISTS models(
 CREATE TABLE IF NOT EXISTS cars(
 	id_car INT PRIMARY KEY UNIQUE NOT NULL AUTO_INCREMENT,
     id_model INT UNIQUE NOT NULL,
-    plate VARCHAR(20) NOT NULL COMMENT 'Placa do veículo',
+    plate VARCHAR(25) NOT NULL COMMENT 'Placa do veículo',
     age YEAR(4) NOT NULL COMMENT 'Ano de lançamento',
-    color VARCHAR(15) NOT NULL,
-    chassis_number VARCHAR(50) NOT NULL COMMENT 'Chassi do veículo',
-    category VARCHAR(50) NOT NULL,
+    color VARCHAR(25) NOT NULL,
+    chassis_number VARCHAR(25) NOT NULL COMMENT 'Chassi do veículo',
+    category VARCHAR(25) NOT NULL,
     air_conditioning BOOLEAN DEFAULT 0,
     airbag BOOLEAN DEFAULT 0,
     automatic_gearbox BOOLEAN DEFAULT 0 COMMENT 'Câmbio automático',
-    maximum_speed VARCHAR(4) NOT NULL COMMENT 'Velocidade máxima',
+    maximum_speed VARCHAR(5) NOT NULL COMMENT 'Velocidade máxima',
     purchase_date DATE NOT NULL COMMENT 'Data da compra do veículo',
     purchase_price DOUBLE(10, 2) NOT NULL COMMENT 'Preço do veículo',
     created_at TIMESTAMP NOT NULL,
@@ -108,13 +108,13 @@ CREATE TABLE IF NOT EXISTS cars(
 CREATE TABLE IF NOT EXISTS customers(
 	id_customer INT PRIMARY KEY UNIQUE NOT NULL AUTO_INCREMENT,
     id_address INT NOT NULL,
-    c_name VARCHAR(150) NOT NULL,
+    c_name VARCHAR(75) NOT NULL,
     born DATE NOT NULL COMMENT 'Data de nascimento',
     rg VARCHAR(25) NOT NULL,
-    cpf CHAR(1) UNIQUE NOT NULL,
+    cpf CHAR(11) UNIQUE NOT NULL,
     landline CHAR(10) NOT NULL COMMENT 'Telefone fixo',
-    cell CHAR(1) NOT NULL,
-    email VARCHAR(150) UNIQUE NOT NULL,
+    cell CHAR(11) NOT NULL,
+    email VARCHAR(75) UNIQUE NOT NULL,
     created_at TIMESTAMP NOT NULL,
     updated_at DATETIME DEFAULT NULL,
     CONSTRAINT fk_c_address FOREIGN KEY(id_address) REFERENCES address(id_address) ON DELETE NO ACTION ON UPDATE CASCADE
