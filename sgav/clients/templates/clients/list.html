@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Lista de clientes{% endblock %} {% block content %}
+
+<br>
+<span class="text-left">
+    <a href="/">
+        <img src="{% static 'assets/images/back.png' %}" alt="Voltar" class="icons">
+        <label style="font-weight: bold;">Voltar</label>
+    </a>
+</span>
+<div class="container col-md-8">
+    <h1>Lista de clientes</h1>
+    {% if messages %}
+    <ul class="messages" id="message">
+        {% for message in messages %}
+        <li {% if message.tags %} class="alert alert-{{message.tags}}" {% endif %}>{{message}}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <table class="table">
+        <thead class="table-dark table-active">
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">CPF/CNPJ</th>
+                <th scope="col">Nº do celular</th>
+                <th scope="col" class="text-center">Deletar cliente</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for client in clients %}
+            <tr>
+                <td><a href="client/{{client.id}}">{{client.nome}}</a></td>
+                <td>{{client.cpf_cnpj}}</td>
+                <td>{{client.celular}}</td>
+                <td class="text-center"><a href="delete/{{client.id}}"><i class="icofont-trash text-danger"></i></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

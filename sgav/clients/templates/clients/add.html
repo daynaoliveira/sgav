@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Cadastro de clientes{% endblock %} {% block content %}
+
+<br>
+<span class="text-left">
+    <a href="/">
+        <img src="{% static 'assets/images/back.png' %}" alt="Voltar" class="icons">
+        <label style="font-weight: bold;">Voltar</label>
+    </a>
+</span>
+<div class="container col-md-8">
+    <h1 class="text-center">Cadastro de clientes</h1>
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-10">
+                <form method="POST">
+                    <div class="card">
+                        <div class="col-md-8 offset-md-2">
+                            {% csrf_token %} {{ form.as_p }}
+                        </div>
+                        <div class="card-footer">
+                            <input type="submit" class="btn btn-save" value="Finalizar cadastro">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Informações adicionais - aluguel{% endblock %} {% block content %}
+
+<br>
+<span class="text-left">
+    <a href="../">
+        <img src="{% static 'assets/images/back.png' %}" alt="Voltar" class="icons">
+        <label style="font-weight: bold;">Voltar</label>
+    </a>
+</span>
+<div class="container col-md-8">
+    <h1 class="text-center">{{rental.id_carro}}</h1>
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title text-center">Cliente: {{rental.id_cliente}}</h5>
+                    </div>
+                    <div class="card-body">
+                        <img src="{% static 'assets/images/i_car_1.png' %}" class="user-img" alt="Carro">
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">O.S. nº: {{rental.id}}</li>
+                            <li class="list-group-item">Preço do aluguel - R$: {{rental.preco}}</li>
+                            <li class="list-group-item">Data do aluguel: {{rental.data_aluguel}}</li>
+                            <li class="list-group-item">Data de retorno: {{rental.data_retorno}}</li>
+                            <li class="list-group-item">Retornou: {{rental.retornou}}</li>
+                            <li class="list-group-item">Última atualização: {{rental.data_atualizacao}}</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <a href="../edit_rental/{{rental.id}}" class="card-link"><span style="font-weight: bold;">Finalizar aluguel</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

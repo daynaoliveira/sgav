@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Lista de carros{% endblock %} {% block content %}
+
+<br>
+<span class="text-left">
+    <a href="/">
+        <img src="{% static 'assets/images/back.png' %}" alt="Voltar" class="icons">
+        <label style="font-weight: bold;">Voltar</label>
+    </a>
+</span>
+<div class="container col-md-8">
+    <h1>Lista de carros da loja</h1>
+    <table class="table">
+        <thead class="table-dark table-active">
+            <tr>
+                <th scope="col">Marca</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Cor</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for car in cars %}
+            <tr>
+                <td><a href="car/{{car.id}}">{{car.marca}}</a></td>
+                <td>{{car.modelo}}</td>
+                <td>{{car.cor}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Informações adicionais - veículo{% endblock %} {% block content %}
+
+<br>
+<span class="text-left">
+    <a href="../">
+        <img src="{% static 'assets/images/back.png' %}" alt="Voltar" class="icons">
+        <label style="font-weight: bold;">Voltar</label>
+    </a>
+</span>
+<div class="container col-md-8">
+    <h1 class="text-center">{{car.marca}}, {{car.ano}}</h1>
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title text-center">Modelo: {{car.modelo}}</h5>
+                    </div>
+                    <div class="card-body">
+                        <img src="{% static 'assets/images/carro.png' %}" class="car-img" alt="Carro">
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Placa: {{car.placa}}</li>
+                            <li class="list-group-item">Cor: {{car.cor}}</li>
+                            <li class="list-group-item">Nº do chassi: {{car.chassi}}</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <a href="edit_car/{{car.id}}" class="card-link"><span style="font-weight: bold;">Editar informações</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

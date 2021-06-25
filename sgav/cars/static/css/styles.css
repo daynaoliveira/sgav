@@ -1,0 +1,90 @@
+.container {
+    font-family: 'Raleway', sans-serif;
+}
+
+.menu {
+    border: none;
+}
+
+.menu button:focus {
+    outline: 0 !important;
+}
+
+.logo {
+    width: 1.8rem;
+    height: 2rem;
+}
+
+.icons:first-child {
+    margin-right: .3rem;
+}
+
+.icons {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-bottom: 2px;
+    margin-right: .6rem;
+}
+
+.footer {
+    margin-top: 82vh;
+    height: 50px;
+    text-align: center;
+}
+
+[class*="icofont"] {
+    color: #709FB0;
+}
+
+[class*="fas"],
+[class*="far"] {
+    color: #709FB0;
+}
+
+a {
+    text-decoration: none !important;
+    color: #709FB0 !important;
+}
+
+.car-img {
+    width: 70%;
+    height: 70%;
+    margin-left: 15%;
+    margin-top: 1rem;
+}
+
+body {
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+body::-webkit-scrollbar {
+    display: none;
+    /* Safari and Chrome */
+}
+
+.btn-save {
+    color: #f0f0f0 !important;
+    background-color: #5B6D5B !important;
+}
+
+.btn-save:hover {
+    background-color: #346751 !important;
+}
+
+.user-img {
+    width: 25%;
+    height: 25%;
+    margin-left: 35%;
+    margin-top: 1rem;
+}
+
+ul.messages {
+    padding: 0;
+}
+
+ul.messages li {
+    list-style-type: none;
+}
