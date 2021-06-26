@@ -1,9 +1,9 @@
-{% extends 'base.html' %} {% load static %} {% block title %}Edição de veículos{% endblock %} {% block content %}
+{% extends 'base.html' %} {% block title %}Edição de veículos{% endblock %} {% block content %}
 
 <br>
 <span class="text-left">
-    <a href="../{{car.id}}">
-        <img src="{% static 'assets/images/back.png' %}" alt="Voltar" class="icons">
+    <a href="{% url 'car_details' id=car.id %}">
+        <i class="icofont-stylish-left icons back"></i>
         <label style="font-weight: bold;">Voltar</label>
     </a>
 </span>

@@ -39,13 +39,13 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li>
-                                    <a class="dropdown-item" href="clients/add_client/">
+                                    <a class="dropdown-item" href="{% url 'add_client' %}">
                                         <i class="fas fa-user-plus"></i>
                                         <span>Cadastrar cliente</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="clients/list">
+                                    <a class="dropdown-item" href="{% url 'clients_list' %}">
                                         <i class="icofont-users-social"></i>
                                         <span>Lista de clientes</span>
                                     </a>
@@ -59,13 +59,13 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li>
-                                    <a class="dropdown-item" href="add_car/">
+                                    <a class="dropdown-item" href="{% url 'add_car' %}">
                                         <i class="icofont-car-alt-3"></i>
                                         <span>Cadastrar veículo</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="cars/list">
+                                    <a class="dropdown-item" href="{% url 'cars_list' %}">
                                         <i class="fas fa-stream"></i>
                                         <span>Todos os veículos</span>
                                     </a>
@@ -91,19 +91,19 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li>
-                                    <a class="dropdown-item" href="rental/add_rental">
+                                    <a class="dropdown-item" href="{% url 'add_rental' %}">
                                         <i class="fas fa-hand-holding-usd"></i>
                                         <span>Aluguel</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="rental/list">
+                                    <a class="dropdown-item" href="{% url 'rentals_list' %}">
                                         <i class="far fa-calendar-minus"></i>
                                         <span>Aluguéis em curso</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="rental/list/final">
+                                    <a class="dropdown-item" href="{% url 'rentals_list_final' %}">
                                         <i class="far fa-calendar-check"></i>
                                         <span>Aluguéis finalizados</span>
                                     </a>

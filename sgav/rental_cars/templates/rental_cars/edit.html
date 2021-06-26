@@ -2,8 +2,8 @@
 
 <br>
 <span class="text-left">
-    <a href="../rental/{{rental.id}}">
-        <img src="{% static 'assets/images/back.png' %}" alt="Voltar" class="icons">
+    <a href="{% url 'rental_details' id=rental.id %}">
+        <i class="icofont-stylish-left icons back"></i>
         <label style="font-weight: bold;">Voltar</label>
     </a>
 </span>

@@ -88,3 +88,12 @@ ul.messages {
 ul.messages li {
     list-style-type: none;
 }
+
+.back {
+    font-size: 1.5rem;
+    vertical-align: bottom;
+}
+
+.home {
+    font-size: 1.4rem;
+}

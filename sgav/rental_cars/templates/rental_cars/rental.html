@@ -2,8 +2,8 @@
 
 <br>
 <span class="text-left">
-    <a href="../">
-        <img src="{% static 'assets/images/back.png' %}" alt="Voltar" class="icons">
+    <a href="{% url 'rentals_list' %}">
+        <i class="icofont-stylish-left icons back"></i>
         <label style="font-weight: bold;">Voltar</label>
     </a>
 </span>
@@ -30,7 +30,7 @@
                         </ul>
                     </div>
                     <div class="card-footer">
-                        <a href="../edit_rental/{{rental.id}}" class="card-link"><span style="font-weight: bold;">Finalizar aluguel</span></a>
+                        <a href="{% url 'edit_rental' id=rental.id %}" class="card-link"><span style="font-weight: bold;">Finalizar aluguel</span></a>
                     </div>
                 </div>
             </div>

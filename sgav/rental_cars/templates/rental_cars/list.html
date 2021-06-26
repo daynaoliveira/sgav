@@ -1,10 +1,10 @@
-{% extends 'base.html' %} {% load static %} {% block title %}Lista de aluguéis{% endblock %} {% block content %}
+{% extends 'base.html' %} {% block title %}Lista de aluguéis{% endblock %} {% block content %}
 
 <br>
 <span class="text-left">
-    <a href="/">
-        <img src="{% static 'assets/images/back.png' %}" alt="Voltar" class="icons">
-        <label style="font-weight: bold;">Voltar</label>
+    <a href="{% url 'home' %}">
+        <i class="icofont-home icons home"></i>
+        <label style="font-weight: bold;">Home</label>
     </a>
 </span>
 <div class="container col-md-10">
@@ -21,7 +21,7 @@
         <tbody>
             {% for rental in rentals %}
             <tr>
-                <td><a href="rental/{{rental.id}}">{{rental.id_carro}}</a></td>
+                <td><a href="{% url 'rental_details' id=rental.id %}">{{rental.id_carro}}</a></td>
                 <td>{{rental.id_cliente}}</td>
                 <td>{{rental.data_aluguel}}</td>
                 <td>{{rental.data_retorno}}</td>

@@ -1,10 +1,10 @@
-{% extends 'base.html' %} {% load static %} {% block title %}Lista de carros{% endblock %} {% block content %}
+{% extends 'base.html' %} {% block title %}Lista de carros{% endblock %} {% block content %}
 
 <br>
 <span class="text-left">
-    <a href="/">
-        <img src="{% static 'assets/images/back.png' %}" alt="Voltar" class="icons">
-        <label style="font-weight: bold;">Voltar</label>
+    <a href="{% url 'home' %}">
+        <i class="icofont-home icons home"></i>
+        <label style="font-weight: bold;">Home</label>
     </a>
 </span>
 <div class="container col-md-8">
@@ -20,7 +20,7 @@
         <tbody>
             {% for car in cars %}
             <tr>
-                <td><a href="car/{{car.id}}">{{car.marca}}</a></td>
+                <td><a href="{% url 'car_details' id=car.id %}">{{car.marca}}</a></td>
                 <td>{{car.modelo}}</td>
                 <td>{{car.cor}}</td>
             </tr>
