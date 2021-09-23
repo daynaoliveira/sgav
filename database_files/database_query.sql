@@ -3,13 +3,13 @@ USE sgav;
 
 CREATE TABLE IF NOT EXISTS cars(
 	id_car INT PRIMARY KEY UNIQUE NOT NULL AUTO_INCREMENT,
-    brand VARCHAR(75) UNIQUE NOT NULL COMMENT 'Marca do veículo',
-	model VARCHAR(75) UNIQUE NOT NULL COMMENT 'Modelo do veículo',
-    plate VARCHAR(25) NOT NULL COMMENT 'Placa do veículo',
-    age YEAR(4) NOT NULL COMMENT 'Ano de lançamento',
+    brand VARCHAR(75) NOT NULL COMMENT 'Marca do veículo',
+	model VARCHAR(75) NOT NULL COMMENT 'Modelo do veículo',
+    plate VARCHAR(25) UNIQUE NOT NULL COMMENT 'Placa do veículo',
+    age CHAR(4) NOT NULL COMMENT 'Ano de lançamento',
     color VARCHAR(25) NOT NULL,
-    chassis_number VARCHAR(25) NOT NULL COMMENT 'Chassi do veículo'
-);
+    chassis_number VARCHAR(25) UNIQUE NOT NULL COMMENT 'Chassi do veículo'
+) ENGINE=INNODB;
 
 CREATE TABLE IF NOT EXISTS customers(
 	id_customer INT PRIMARY KEY UNIQUE NOT NULL AUTO_INCREMENT,
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS customers(
     num VARCHAR(5) NOT NULL,
     district VARCHAR(75) NOT NULL COMMENT 'Bairro',
     complement VARCHAR(75)
-);
+) ENGINE=INNODB;
 
 CREATE TABLE IF NOT EXISTS rental_cars(
 	id_rental_car INT PRIMARY KEY UNIQUE NOT NULL AUTO_INCREMENT,
@@ -35,6 +35,6 @@ CREATE TABLE IF NOT EXISTS rental_cars(
     returned BOOLEAN DEFAULT 0 COMMENT 'Devolvido [sim = 1 | não = 0]',
     created_at TIMESTAMP NOT NULL,
     updated_at DATETIME DEFAULT NULL,
-    CONSTRAINT fk_car FOREIGN KEY(id_car) REFERENCES cars(id_car) ON DELETE NO ACTION ON UPDATE CASCADE,
+	CONSTRAINT fk_car FOREIGN KEY(id_car) REFERENCES cars(id_car) ON DELETE NO ACTION ON UPDATE CASCADE,
 	CONSTRAINT fk_customer FOREIGN KEY(id_customer) REFERENCES customers(id_customer) ON DELETE NO ACTION ON UPDATE CASCADE
-);
+) ENGINE=INNODB;
